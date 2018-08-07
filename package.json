@@ -1,0 +1,24 @@
+{
+  "name": "hijri-converter",
+  "version": "1.0.0",
+  "description": "Convert between Hijri (Um Alqura) and Gregorian",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalwadani/hijri-converter.git"
+  },
+  "keywords": [
+    "Hijri",
+    "Gregorian",
+    "Converter"
+  ],
+  "author": "Dhaifallah Alwadani",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dalwadani/hijri-converter/issues"
+  },
+  "homepage": "https://github.com/dalwadani/hijri-converter#readme"
+}
