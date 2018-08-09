@@ -159,12 +159,12 @@ function getNewMoonMJDNIndexByJDN(mjdn) {
     }
 }
 
-export function toHijri(gy, gm, gd) {
+exports.toHijri = function (gy, gm, gd) {
     var h = d2h(g2d(gy, gm, gd));
     return h;
 }
 
-export function toGregorian(hy, hm, hd) {
+exports.toGregorian = function (hy, hm, hd) {
     var g = d2g(h2d(hy, hm, hd));
     return g;
 }
