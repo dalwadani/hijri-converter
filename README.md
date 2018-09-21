@@ -24,6 +24,6 @@ import { toHijri, toGregorian } from "hijri-converter";
 
 toHijri(1987,3,1) // convert 1st of March, 1987 to Hijri
 
-toHijri(1407,7,1) // convert 1st of Rajab, 1407 to Gregorian
+toGregorian(1407,7,1) // convert 1st of Rajab, 1407 to Gregorian
 
 ```
