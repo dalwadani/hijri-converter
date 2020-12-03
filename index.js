@@ -168,3 +168,54 @@ exports.toGregorian = function (hy, hm, hd) {
     var g = d2g(h2d(hy, hm, hd));
     return g;
 }
+
+function getDateSplit(fullDate) {
+    const arr = fullDate.split('-');
+    const year = (arr)[0];
+    const month = (arr)[1];
+    const day = (arr)[2];
+    return {
+      year,
+      month,
+      day,
+    };
+}
+
+function isDateMatch(hd) {
+    const dateReg = /^\d{4}([./-])\d{2}\1\d{2}$/;
+    const isMatch = `${hd}`.match(dateReg) !== null;
+    if (isMatch) {
+      return true;
+    }
+    return false;
+}
+
+function getTwoDigits(number) {
+    const twoDigits = (`0${number}`).slice(-2);
+    return twoDigits;
+}
+
+function getIntegerValue(numString) {
+    const number = parseInt(numString, 10);
+    return number;
+}
+  
+function getIntegerValue(numString) {
+    const number = parseInt(numString, 10);
+    return number;
+}
+
+exports.HijriToGregorianISOFormat = function (dateString) {
+    if(!isDateMatch(dateString)) return;
+    const { year, month, day } = getDateSplit(dateString);
+  
+    const { gd, gm, gy } = toGregorian(
+        getIntegerValue(year),
+        getIntegerValue(month),
+        getIntegerValue(day),
+    );
+  
+    const dateFormat = `${gy}-${getTwoDigits(gm)}-${getTwoDigits(gd)}`;
+  
+    return dateFormat;
+};
