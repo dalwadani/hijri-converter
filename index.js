@@ -199,11 +199,6 @@ function getIntegerValue(numString) {
     const number = parseInt(numString, 10);
     return number;
 }
-  
-function getIntegerValue(numString) {
-    const number = parseInt(numString, 10);
-    return number;
-}
 
 exports.HijriToGregorianISOFormat = function (dateString) {
     if(!isDateMatch(dateString)) return;
