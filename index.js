@@ -183,21 +183,19 @@ function getDateSplit(fullDate) {
 
 function isDateMatch(hd) {
     const dateReg = /^\d{4}([./-])\d{2}\1\d{2}$/;
-    const isMatch = `${hd}`.match(dateReg) !== null;
-    if (isMatch) {
-      return true;
-    }
-    return false;
+    return (`${hd}`.match(dateReg) !== null);
 }
 
 function getTwoDigits(number) {
-    const twoDigits = (`0${number}`).slice(-2);
-    return twoDigits;
+    return (`0${number}`).slice(-2);
 }
 
 function getIntegerValue(numString) {
-    const number = parseInt(numString, 10);
-    return number;
+    return parseInt(numString, 10);
+}
+
+function getDateFormat(h, m, d) {
+    return `${h}-${getTwoDigits(m)}-${getTwoDigits(d)}`
 }
 
 exports.toGregorianISOFormat = function (dateString) {
@@ -210,9 +208,7 @@ exports.toGregorianISOFormat = function (dateString) {
         getIntegerValue(day),
     );
   
-    const dateFormat = `${gy}-${getTwoDigits(gm)}-${getTwoDigits(gd)}`;
-  
-    return dateFormat;
+    return getDateFormat(gy, gm, gd);
 };
 
 exports.toHijriISOFormat = function (dateString) {
@@ -225,7 +221,5 @@ exports.toHijriISOFormat = function (dateString) {
         getIntegerValue(day),
     );
   
-    const dateFormat = `${hy}-${getTwoDigits(hm)}-${getTwoDigits(hd)}`;
-  
-    return dateFormat;
+    return getDateFormat(hy, hm, hd);
 };
