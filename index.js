@@ -200,7 +200,7 @@ function getIntegerValue(numString) {
     return number;
 }
 
-exports.HijriToGregorianISOFormat = function (dateString) {
+exports.toGregorianISOFormat = function (dateString) {
     if(!isDateMatch(dateString)) return;
     const { year, month, day } = getDateSplit(dateString);
   
@@ -211,6 +211,21 @@ exports.HijriToGregorianISOFormat = function (dateString) {
     );
   
     const dateFormat = `${gy}-${getTwoDigits(gm)}-${getTwoDigits(gd)}`;
+  
+    return dateFormat;
+};
+
+exports.toHijriISOFormat = function (dateString) {
+    if(!isDateMatch(dateString)) return;
+    const { year, month, day } = getDateSplit(dateString);
+  
+    const { hd, hm, hy } = toHijri(
+        getIntegerValue(year),
+        getIntegerValue(month),
+        getIntegerValue(day),
+    );
+  
+    const dateFormat = `${hy}-${getTwoDigits(hm)}-${getTwoDigits(hd)}`;
   
     return dateFormat;
 };
