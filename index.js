@@ -168,3 +168,58 @@ exports.toGregorian = function (hy, hm, hd) {
     var g = d2g(h2d(hy, hm, hd));
     return g;
 }
+
+function getDateSplit(fullDate) {
+    const arr = fullDate.split('-');
+    const year = (arr)[0];
+    const month = (arr)[1];
+    const day = (arr)[2];
+    return {
+      year,
+      month,
+      day,
+    };
+}
+
+function isDateMatch(hd) {
+    const dateReg = /^\d{4}([./-])\d{2}\1\d{2}$/;
+    return (`${hd}`.match(dateReg) !== null);
+}
+
+function getTwoDigits(number) {
+    return (`0${number}`).slice(-2);
+}
+
+function getIntegerValue(numString) {
+    return parseInt(numString, 10);
+}
+
+function getDateFormat(h, m, d) {
+    return `${h}-${getTwoDigits(m)}-${getTwoDigits(d)}`
+}
+
+exports.toGregorianISOFormat = function (dateString) {
+    if(!isDateMatch(dateString)) return;
+    const { year, month, day } = getDateSplit(dateString);
+  
+    const { gd, gm, gy } = toGregorian(
+        getIntegerValue(year),
+        getIntegerValue(month),
+        getIntegerValue(day),
+    );
+  
+    return getDateFormat(gy, gm, gd);
+};
+
+exports.toHijriISOFormat = function (dateString) {
+    if(!isDateMatch(dateString)) return;
+    const { year, month, day } = getDateSplit(dateString);
+  
+    const { hd, hm, hy } = toHijri(
+        getIntegerValue(year),
+        getIntegerValue(month),
+        getIntegerValue(day),
+    );
+  
+    return getDateFormat(hy, hm, hd);
+};
